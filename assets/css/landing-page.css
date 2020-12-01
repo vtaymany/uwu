@@ -1,0 +1,16 @@
+.is-vertical-center {
+  display: flex;
+  align-items: center;
+}
+.primary {
+  color: #00d1b2;
+}
+.danger {
+  color: #ff3860;
+}
+.warning {
+  color: #ffdd57;
+}
+.title {
+  font-size: 5em;
+}
