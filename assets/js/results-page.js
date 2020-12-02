@@ -44,7 +44,6 @@ $(document).ready(function () {
       console.log(response)
 
       //getting recommendations with animeID 'int'
-
       const animeID = response.results[0].mal_id
       const queryURL =
         'https://api.jikan.moe/v3/anime/' + animeID + '/recommendations'
@@ -54,20 +53,18 @@ $(document).ready(function () {
         method: 'GET',
       }).then(function (response) {
         console.log(response)
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 25; i++) {
           let resultsContainer = $('#results-section')
-          let videoGameImageURL = response.results[i].background_image
-          let videoGameName = response.results[i].name
-          let videoGameShortDescription = response.results[i].short_description
-          let videoGameInfo =
+          let animeImageURL = response.recommendations[i].image_url
+          console.log(animeImageURL)
+          let animeName = response.recommendations[i].title
+          let animeInfo =
             '<div class="column is-3-tablet is-6-mobile"><div class="card"><div class="card-image"><figure class="image is-4by3"><img src="' +
-            videoGameImageURL +
+            animeImageURL +
             '"alt="Image"/></figure></div><div class="card-content"><div class="media"><div class="media-content"><p class="title is-4">' +
-            videoGameName +
-            '</p></div></div><div class="content">' +
-            videoGameShortDescription +
-            '</div></div></div></div>'
-          resultsContainer.append(videoGameInfo)
+            animeName +
+            '</p></div></div><div class="content"></div></div></div></div>'
+          resultsContainer.append(animeInfo)
         }
       })
     })
