@@ -36,4 +36,7 @@ How to use: first you will land on the UWU's homepage - where you simply enter t
 ### Contributors
 Jade Porter
 Jonnah Marie Pangilinan
+Chris Nguyen
+Ricardo Matamoros
 Van Taymany
+
