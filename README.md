@@ -27,6 +27,10 @@ It is a possibility that you may need to use CORS or Cross Origin Resource Shari
 - Technical Overview:  On the landing page, the user input into the search field in addition to the user category selection of anime, movie, or video games will be used to make API calls for similar recommendations associated with that same category. Local storage will be utilized to set the user values from the landing page and get the values for the results page.  The recommendations are then displayed dynamitcally on the results page using Bulma components. 
 
 ### Installation
+
+No installation required! [Launch application](https://vtaymany.github.io/uwu/)
+
+
 How to use: first you will land on the UWU's homepage - where you simply enter the entity you would like recommendations for then remember to select which genre you would like recommendations for - this will determine which category you results are filtered from.  Once the previously mentioned fields have been entered/selected you then click the Find Waifu button.  The Find Waifu button in-turn prompts the user to the results page.  Where the top 25 recommendations associated with your entity inputted on the landing page will be displayed on the results page according to the category selected.  Then the user will have the option to browse the top 25 recommendations.  The recommendation itself includes the title, a thumbnail image, rating, and description.  The back button is also available for the user to return back to the landing page from the results page.
 
 ### Screenshots
