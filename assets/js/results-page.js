@@ -115,6 +115,21 @@ $(document).ready(function () {
           .then(function (response) {
             // Log the object
             console.log(response)
+            for (i = 0; i < 24; i++) {
+              let resultsContainer = $('#results-section')
+              let movieImageURL = response.results[i].backdrop_path
+              let movieName = response.results[i].title
+              let movieShortDescription = response.results[i].overview
+              let movieInfo =
+                '<div class="column is-3-tablet is-6-mobile"><div class="card"><div class="card-image"><figure class="image is-4by3"><img src="https://image.tmdb.org/t/p/w500' +
+                movieImageURL +
+                '"alt="Image"/></figure></div><div class="card-content"><div class="media"><div class="media-content"><p class="title is-4">' +
+                movieName +
+                '</p></div></div><div class="content">' +
+                movieShortDescription +
+                '</div></div></div></div>'
+              resultsContainer.append(movieInfo)
+            }
           })
       })
   }
