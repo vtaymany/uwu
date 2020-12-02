@@ -43,5 +43,53 @@ $(document).ready(function () {
         console.log(response)
       })
     })
+  } else if (userSearchCategory == 'movie') {
+    // set variables
+    const movieAPIKey = '7a49f9648ab50de4152b3f1cf3a37f81'
+    const movieTitle = userSearchTerm.replace(/\s+/g, '-').toLowerCase()
+
+    // Here we are building the URL we need to query the database
+    var queryURL =
+      'https://api.themoviedb.org/3/search/movie?api_key=' +
+      movieAPIKey +
+      '&language=en-US&query=' +
+      movieTitle
+
+    // Here we run the AJAX call to TMDb API for the userinputted movie information
+    $.ajax({
+      url: queryURL,
+      method: 'GET',
+    })
+      // Storing all of the retrieved data inside of an object called "response"
+      .then(function (response) {
+        // Log the object
+        console.log(response)
+        //store the response object in a variable
+        // const results = response.data
+        // console.log(results)
+        // Looping through each result item
+
+        const movieID = response.results[0].id
+        console.log(movieID)
+        //Here we are building the URL we need to query the database
+        var newQueryURL =
+          'https://api.themoviedb.org/3/movie/' +
+          movieID +
+          '/recommendations?api_key=' +
+          movieAPIKey +
+          '&language=en-US&page=1'
+
+        // Here we run the AJAX call to the TMDb API for the movie recommendations
+        $.ajax({
+          url: newQueryURL,
+          method: 'GET',
+        })
+
+          // We store all of the retrieved data inside of an object called "response"
+          .then(function (response) {
+            // Log the object
+            console.log(response)
+          })
+      })
   }
 })
