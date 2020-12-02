@@ -9,16 +9,29 @@ $(document).ready(function () {
   //Video games
   if (userSearchCategory == 'videoGames') {
     const gameTitle = userSearchTerm.replace(/\s+/g, '-').toLowerCase()
-    console.log(gameTitle)
     var queryURL =
       'https://api.rawg.io/api/games/' + gameTitle + '/suggested?page_size=5'
-    console.log(queryURL)
     $.ajax({
       url: queryURL,
       method: 'GET',
     }).then(function (response) {
-      console.log(response)
+      for (i = 0; i < 24; i++) {
+        let resultsContainer = $('#results-section')
+        let videoGameImageURL = response.results[i].background_image
+        let videoGameName = response.results[i].name
+        let videoGameShortDescription = response.results[i].short_description
+        let videoGameInfo =
+          '<div class="column is-3-tablet is-6-mobile"><div class="card"><div class="card-image"><figure class="image is-4by3"><img src="' +
+          videoGameImageURL +
+          '"alt="Image"/></figure></div><div class="card-content"><div class="media"><div class="media-content"><p class="title is-4">' +
+          videoGameName +
+          '</p></div></div><div class="content">' +
+          videoGameShortDescription +
+          '</div></div></div></div>'
+        resultsContainer.append(videoGameInfo)
+      }
     })
+    //Anime
   } else if (userSearchCategory == 'anime') {
     var animeTitle = userSearchTerm.replace(/\s+/g, '-').toLowerCase()
     var idQuery =
@@ -41,8 +54,24 @@ $(document).ready(function () {
         method: 'GET',
       }).then(function (response) {
         console.log(response)
+        for (i = 0; i < 24; i++) {
+          let resultsContainer = $('#results-section')
+          let videoGameImageURL = response.results[i].background_image
+          let videoGameName = response.results[i].name
+          let videoGameShortDescription = response.results[i].short_description
+          let videoGameInfo =
+            '<div class="column is-3-tablet is-6-mobile"><div class="card"><div class="card-image"><figure class="image is-4by3"><img src="' +
+            videoGameImageURL +
+            '"alt="Image"/></figure></div><div class="card-content"><div class="media"><div class="media-content"><p class="title is-4">' +
+            videoGameName +
+            '</p></div></div><div class="content">' +
+            videoGameShortDescription +
+            '</div></div></div></div>'
+          resultsContainer.append(videoGameInfo)
+        }
       })
     })
+    //Movies
   } else if (userSearchCategory == 'movie') {
     // set variables
     const movieAPIKey = '7a49f9648ab50de4152b3f1cf3a37f81'
