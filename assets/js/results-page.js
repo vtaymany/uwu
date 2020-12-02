@@ -3,8 +3,6 @@ $(document).ready(function () {
   const userSearchCategory = JSON.parse(
     localStorage.getItem('userSearchCategory')
   )
-  console.log(userSearchTerm)
-  console.log(userSearchCategory)
 
   //Video games
   if (userSearchCategory == 'videoGames') {
@@ -41,8 +39,6 @@ $(document).ready(function () {
       url: idQuery,
       method: 'GET',
     }).then(function (response) {
-      console.log(response)
-
       //getting recommendations with animeID 'int'
       const animeID = response.results[0].mal_id
       const queryURL =
@@ -52,11 +48,9 @@ $(document).ready(function () {
         url: queryURL,
         method: 'GET',
       }).then(function (response) {
-        console.log(response)
         for (i = 0; i < 25; i++) {
           let resultsContainer = $('#results-section')
           let animeImageURL = response.recommendations[i].image_url
-          console.log(animeImageURL)
           let animeName = response.recommendations[i].title
           let animeInfo =
             '<div class="column is-3-tablet is-6-mobile"><div class="card"><div class="card-image"><figure class="image is-4by3"><img src="' +
@@ -89,14 +83,12 @@ $(document).ready(function () {
       // Storing all of the retrieved data inside of an object called "response"
       .then(function (response) {
         // Log the object
-        console.log(response)
         //store the response object in a variable
         // const results = response.data
         // console.log(results)
         // Looping through each result item
 
         const movieID = response.results[0].id
-        console.log(movieID)
         //Here we are building the URL we need to query the database
         var newQueryURL =
           'https://api.themoviedb.org/3/movie/' +
@@ -114,7 +106,6 @@ $(document).ready(function () {
           // We store all of the retrieved data inside of an object called "response"
           .then(function (response) {
             // Log the object
-            console.log(response)
             for (i = 0; i < 24; i++) {
               let resultsContainer = $('#results-section')
               let movieImageURL = response.results[i].backdrop_path
